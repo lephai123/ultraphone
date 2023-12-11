@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 14, 2022 lúc 04:30 AM
--- Phiên bản máy phục vụ: 10.4.24-MariaDB
--- Phiên bản PHP: 8.1.6
+-- Host: 127.0.0.1
+-- Generation Time: Dec 11, 2023 at 12:44 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `ultraphone`
+-- Database: `ultraphone`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bank`
+-- Table structure for table `bank`
 --
 
 CREATE TABLE `bank` (
@@ -32,12 +32,12 @@ CREATE TABLE `bank` (
   `name_bank` varchar(255) NOT NULL,
   `num_bank` varchar(255) NOT NULL,
   `name_num` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `bill`
+-- Table structure for table `bill`
 --
 
 CREATE TABLE `bill` (
@@ -56,10 +56,10 @@ CREATE TABLE `bill` (
   `total_amount` int(10) NOT NULL,
   `status` tinyint(4) NOT NULL COMMENT '0.Đơn hàng mới \r\n1.Đang xử lý\r\n2.Đang giao hàng\r\n3.Đã giao hàng',
   `status_pay` varchar(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `bill`
+-- Dumping data for table `bill`
 --
 
 INSERT INTO `bill` (`id_bill`, `bill_code`, `id_user`, `id_pro`, `user_name`, `name_pro`, `full_name`, `address`, `phone`, `email`, `payment`, `order_date`, `total_amount`, `status`, `status_pay`) VALUES
@@ -70,12 +70,13 @@ INSERT INTO `bill` (`id_bill`, `bill_code`, `id_user`, `id_pro`, `user_name`, `n
 (80, '82735', 23, 0, 'min', '', 'Min mun', '80 Xuân Phương, Nam Từ Liêm, Hà Nội', 987654321, 'minhnvph20397@fpt.edu.vn', 1, '2022-12-14 10:24:32', 4690000, 3, '1'),
 (81, '65817', 24, 0, 'phuongct', '', 'Chu Tuấn Phương', 'Ngọa Long, Minh Khai, Bắc Từ Liêm, Hà Nội', 335099885, 'ctuanphuong18@gmail.com', 1, '2022-12-14 10:26:18', 20950000, 3, '1'),
 (82, '57184', 24, 0, 'phuongct', '', 'Chu Tuấn Phương', 'Ngọa Long, Minh Khai, Bắc Từ Liêm, Hà Nội', 335099885, 'ctuanphuong18@gmail.com', 1, '2022-12-14 10:27:31', 18600000, 3, '1'),
-(83, '25761', 24, 0, 'phuongct', '', 'Chu Tuấn Phương', 'Ngọa Long, Minh Khai, Bắc Từ Liêm, Hà Nội', 335099885, 'ctuanphuong18@gmail.com', 1, '2022-12-14 10:28:33', 2990000, 3, '1');
+(83, '25761', 24, 0, 'phuongct', '', 'Chu Tuấn Phương', 'Ngọa Long, Minh Khai, Bắc Từ Liêm, Hà Nội', 335099885, 'ctuanphuong18@gmail.com', 1, '2022-12-14 10:28:33', 2990000, 3, '1'),
+(84, '68429', 26, 0, 'lequocphai', '', 'Lê Quốc Phái', 'Nam Định', 375616574, 'lequocphaikql@gmail.com', 3, '2023-12-11 06:40:42', 20590000, 0, '0');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `cart`
+-- Table structure for table `cart`
 --
 
 CREATE TABLE `cart` (
@@ -89,10 +90,10 @@ CREATE TABLE `cart` (
   `quantity` int(11) NOT NULL,
   `total_amount` int(10) NOT NULL,
   `id_bill` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `cart`
+-- Dumping data for table `cart`
 --
 
 INSERT INTO `cart` (`id`, `id_user`, `user_name`, `id_pro`, `img_pro`, `name_pro`, `price_pro`, `quantity`, `total_amount`, `id_bill`) VALUES
@@ -103,21 +104,22 @@ INSERT INTO `cart` (`id`, `id_user`, `user_name`, `id_pro`, `img_pro`, `name_pro
 (70, 23, 'min', 11, 'realme-c35-thumb-new-600x600.jpg', ' Realme C35 128GB', 4690000, 1, 4690000, 80),
 (71, 24, 'phuongct', 20, 'xiaomi-12s-ultra-050722-023437-600x600.jpg', 'Xiaomi 12S Ultra', 20950000, 1, 20950000, 81),
 (72, 24, 'phuongct', 24, 'apple-iphone-x-new-1.jpg', 'iPhone X 512GB ', 18600000, 1, 18600000, 82),
-(73, 24, 'phuongct', 21, 'vsmart-active-3-tim-600x600-200x200.jpg', ' Vsmart Active 3 (6GB/64GB) ', 2990000, 1, 2990000, 83);
+(73, 24, 'phuongct', 21, 'vsmart-active-3-tim-600x600-200x200.jpg', ' Vsmart Active 3 (6GB/64GB) ', 2990000, 1, 2990000, 83),
+(74, 26, 'lequocphai', 27, 'samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg', 'Samsung Galaxy Z Flip 4', 20590000, 1, 20590000, 84);
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
   `id_cate` int(11) NOT NULL,
   `name_cate` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id_cate`, `name_cate`) VALUES
@@ -133,7 +135,7 @@ INSERT INTO `category` (`id_cate`, `name_cate`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -144,10 +146,10 @@ CREATE TABLE `comment` (
   `full_name` varchar(255) NOT NULL,
   `id_pro` int(11) NOT NULL,
   `comment_date` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `comment`
+-- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`id_cmt`, `content`, `id_user`, `user_name`, `full_name`, `id_pro`, `comment_date`) VALUES
@@ -166,7 +168,7 @@ INSERT INTO `comment` (`id_cmt`, `content`, `id_user`, `user_name`, `full_name`,
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `history_bank`
+-- Table structure for table `history_bank`
 --
 
 CREATE TABLE `history_bank` (
@@ -175,10 +177,10 @@ CREATE TABLE `history_bank` (
   `comment` varchar(255) DEFAULT NULL,
   `time` varchar(255) DEFAULT NULL,
   `tranid` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `history_bank`
+-- Dumping data for table `history_bank`
 --
 
 INSERT INTO `history_bank` (`id`, `amount`, `comment`, `time`, `tranid`) VALUES
@@ -195,7 +197,7 @@ INSERT INTO `history_bank` (`id`, `amount`, `comment`, `time`, `tranid`) VALUES
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `product`
+-- Table structure for table `product`
 --
 
 CREATE TABLE `product` (
@@ -208,14 +210,14 @@ CREATE TABLE `product` (
   `detail_des` text NOT NULL,
   `view` int(11) NOT NULL DEFAULT 0,
   `idcate` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `product`
+-- Dumping data for table `product`
 --
 
 INSERT INTO `product` (`id_pro`, `name_pro`, `price`, `discount`, `img_pro`, `short_des`, `detail_des`, `view`, `idcate`) VALUES
-(7, 'iPhone 14 Pro Max 256GB', 36999000, 10, 'iPhone_14_Pro_Max-Pur1.jpg', 'iPhone 14 Pro Max đem đến những trải nghiệm không thể tìm thấy trên mọi thế hệ iPhone trước đó với màu Tím Deep Purple sang trọng, camera 48MP lần đầu xuất hiện, chip A16 Bionic và màn hình “viên thuốc” Dynamic Island linh hoạt, nịnh mắt.', '•	Màn hình: OLED6.7\"Super Retina XDR\r\n•	Hệ điều hành: iOS 16\r\n•	Camera sau: Chính 48 MP & Phụ 12 MP, 12 MP\r\n•	Camera trước: 12 MP\r\n•	Chip: Apple A16 Bionic\r\n•	RAM: 6 GB\r\n•	Dung lượng lưu trữ: 256 GB\r\n•	SIM: 1 Nano SIM & 1 eSIMHỗ trợ 5G\r\n•	Pin, Sạc: 4323 mAh20 W\r\n\r\n', 130, 8),
+(7, 'iPhone 14 Pro Max 256GB', 10000, 10, 'iPhone_14_Pro_Max-Pur1.jpg', 'iPhone 14 Pro Max đem đến những trải nghiệm không thể tìm thấy trên mọi thế hệ iPhone trước đó với màu Tím Deep Purple sang trọng, camera 48MP lần đầu xuất hiện, chip A16 Bionic và màn hình “viên thuốc” Dynamic Island linh hoạt, nịnh mắt.', '<p>&bull; M&agrave;n h&igrave;nh: OLED6.7&quot;Super Retina XDR &bull; Hệ điều h&agrave;nh: iOS 16 &bull; Camera sau: Ch&iacute;nh 48 MP &amp; Phụ 12 MP, 12 MP &bull; Camera trước: 12 MP &bull; Chip: Apple A16 Bionic &bull; RAM: 6 GB &bull; Dung lượng lưu trữ: 256 GB &bull; SIM: 1 Nano SIM &amp; 1 eSIMHỗ trợ 5G &bull; Pin, Sạc: 4323 mAh20 W</p>\r\n', 130, 8),
 (8, 'OPPO Reno6 5G', 9850000, 0, 'oppo_reno4g.jpg', 'Nối tiếp sự thành công của dòng Reno5, OPPO mới đây đã trình làng bộ đôi siêu phẩm thuộc dòng OPPO Reno6 series có cấu hình mạnh mẽ, thiết kế ấn tượng. Trong đó, chiếc OPPO Reno6 5G với những cải tiến mới mẻ hơn thế hệ tiền nhiệm chắc chắn sẽ là một siêu phẩm trên thị trường smartphone hiện nay mà bạn không nên bỏ lỡ!', '•	Màn hình: AMOLED6.43\"Full HD+\r\n•	Hệ điều hành: Android 11\r\n•	Camera sau: Chính 64 MP & Phụ 8 MP, 2 MP\r\n•	Camera trước: 32 MP\r\n•	Chip: MediaTek Dimensity 900 5G\r\n•	RAM: 8 GB\r\n•	Dung lượng lưu trữ: 128 GB\r\n•	SIM: 2 Nano SIMHỗ trợ 5G\r\n•	Pin, Sạc: 4300 mAh65 W\r\n\r\n', 45, 7),
 (9, 'Galaxy S22 Ultra 8/128GB', 17990000, 0, 'Galaxy-S22-Ultra-Black-600x600.jpg', 'Samsung Galaxy S22 Ultra đơn giản nhưng đồng thời cũng tuyệt đẹp. Các góc cạnh của sản phẩm hoàn thiện sắc nét, vuông vắn. Cụm camera vuông như mọi năm đã biến mất, thay vào đó là một thiết kế đồng bộ camera với mặt lưng. Chúng phẳng hơn và liền lạc, tổng thể là đơn giản nhưng đẹp mắt.', '•	Công nghệ màn hình: Dynamic AMOLED 2X\r\n•	Độ phân giải: 3088 x 1440\r\n•	Màn hình rộng: 6.8\", Tần số quét: 1 - 120 Hz\r\n•	Độ phân giải: 12MP (UW) + 108MP (W) + 12MP (Tele3x) + 12MP (Tele10x), 40MP\r\n•	Hệ điều hành: Android 12\r\n•	Chip xử lý (CPU): Snapdragon® 8 Gen 1 (4nm)\r\n•	Bộ nhớ trong (ROM): 128GB\r\n•	RAM: 8GB\r\n•	Mạng di động: 5G\r\n•	Số khe sim: 1 nano SIM + 1 e-SIM\r\n•	Dung lượng pin: 5000 mAh\r\n', 184, 1),
 (11, ' Realme C35 128GB', 4690000, 0, 'realme-c35-thumb-new-600x600.jpg', 'Realme C35 sở hữu màu sắc như xanh ngọc sang trọng, đen tuyền huyền bí cùng các đường nét thiết kế tỉ mỉ, điện thoại này được thiết kế với khung bo góc làm bằng vật liệu 2D phát sáng linh động, làm cho tổng thể vẻ ngoài của máy trở nên phong cách hơn.', '•	Màn hình: IPS LCD6.6\"Full HD+\r\n•	Hệ điều hành: Android 11\r\n•	Camera sau: Chính 50 MP & Phụ 2 MP, 0.3 MP\r\n•	Camera trước: 8 MP\r\n•	Chip: Unisoc T616\r\n•	RAM: 4GB\r\n•	Dung lượng lưu trữ: 128 GB\r\n•	SIM: 2 Nano SIM Hỗ trợ 4G\r\n•	Pin, Sạc: 5000 mAh18 W\r\n', 26, 10),
@@ -233,7 +235,7 @@ INSERT INTO `product` (`id_pro`, `name_pro`, `price`, `discount`, `img_pro`, `sh
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `question`
+-- Table structure for table `question`
 --
 
 CREATE TABLE `question` (
@@ -242,20 +244,20 @@ CREATE TABLE `question` (
   `email` varchar(250) NOT NULL,
   `phone` varchar(20) NOT NULL,
   `contennt` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `question`
+-- Dumping data for table `question`
 --
 
 INSERT INTO `question` (`id_ques`, `name`, `email`, `phone`, `contennt`) VALUES
-(14, 'Chu Tuấn Phương', 'ctuanphuong18@gmail.com', '0335099885', 'Tôi muốn mua iPhone 11 Promax, mong shop sẽ update thêm'),
+(14, 'Lê Quốc Phái', 'lequocphaikql@gmail.com', '0375616574', 'Tôi muốn mua iPhone 15 Promax, mong shop sẽ update thêm'),
 (15, 'Chu Tuấn Phương', 'ctuanphuong18@gmail.com', '0335099885', 'Shop có tuyển nhân viên giao hàng ko ạ ?');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -271,36 +273,37 @@ CREATE TABLE `user` (
   `register_date` date DEFAULT NULL,
   `last_login` date DEFAULT NULL,
   `role` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id_user`, `user_name`, `password`, `full_name`, `sex`, `email_user`, `address`, `phone_user`, `img_user`, `register_date`, `last_login`, `role`) VALUES
 (16, 'admin', '000000', 'Admin Ultraphone', 0, 'zatuzick03@gmail.com', '', '', '', NULL, NULL, 1),
 (23, 'min', '250303', 'Min mun', 0, 'minhnvph20397@fpt.edu.vn', '', '', '', NULL, NULL, 0),
 (24, 'phuongct', '180803', 'Chu Tuấn Phương', 0, 'ctuanphuong18@gmail.com', 'Ngọa Long, Minh Khai, Bắc Từ Liêm, Hà Nội', '0335099885', 'z3908780836163_88f267db3445b3b010eb4b6f12755f67.jpg', NULL, NULL, 0),
-(25, 'quanglinhnb', '000000', 'Đỗ Quang Linh', 0, 'linhdqph19316@fpt.edu.vn', '', '', '', NULL, NULL, 0);
+(25, 'quanglinhnb', '000000', 'Đỗ Quang Linh', 0, 'linhdqph19316@fpt.edu.vn', '', '', '', NULL, NULL, 0),
+(26, 'lequocphai', 'lequocphai1', 'Lê Quốc Phái', 0, 'lequocphaikql@gmail.com', '', '', '', NULL, NULL, 1);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `bank`
+-- Indexes for table `bank`
 --
 ALTER TABLE `bank`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `bill`
+-- Indexes for table `bill`
 --
 ALTER TABLE `bill`
   ADD PRIMARY KEY (`id_bill`);
 
 --
--- Chỉ mục cho bảng `cart`
+-- Indexes for table `cart`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`),
@@ -308,13 +311,13 @@ ALTER TABLE `cart`
   ADD KEY `lk_bill_cart` (`id_bill`);
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id_cate`);
 
 --
--- Chỉ mục cho bảng `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`id_cmt`),
@@ -322,107 +325,107 @@ ALTER TABLE `comment`
   ADD KEY `lk_pro_cmt` (`id_pro`);
 
 --
--- Chỉ mục cho bảng `history_bank`
+-- Indexes for table `history_bank`
 --
 ALTER TABLE `history_bank`
   ADD PRIMARY KEY (`id`);
 
 --
--- Chỉ mục cho bảng `product`
+-- Indexes for table `product`
 --
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id_pro`),
   ADD KEY `lk_cate_product` (`idcate`);
 
 --
--- Chỉ mục cho bảng `question`
+-- Indexes for table `question`
 --
 ALTER TABLE `question`
   ADD PRIMARY KEY (`id_ques`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id_user`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `bank`
+-- AUTO_INCREMENT for table `bank`
 --
 ALTER TABLE `bank`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `bill`
+-- AUTO_INCREMENT for table `bill`
 --
 ALTER TABLE `bill`
-  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id_bill` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
--- AUTO_INCREMENT cho bảng `cart`
+-- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id_cate` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT cho bảng `comment`
+-- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
   MODIFY `id_cmt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
--- AUTO_INCREMENT cho bảng `history_bank`
+-- AUTO_INCREMENT for table `history_bank`
 --
 ALTER TABLE `history_bank`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
--- AUTO_INCREMENT cho bảng `product`
+-- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
   MODIFY `id_pro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
--- AUTO_INCREMENT cho bảng `question`
+-- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
   MODIFY `id_ques` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `cart`
+-- Constraints for table `cart`
 --
 ALTER TABLE `cart`
   ADD CONSTRAINT `lk_bill_cart` FOREIGN KEY (`id_bill`) REFERENCES `bill` (`id_bill`),
   ADD CONSTRAINT `lk_pro_cart` FOREIGN KEY (`id_pro`) REFERENCES `product` (`id_pro`);
 
 --
--- Các ràng buộc cho bảng `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `lk_pro_cmt` FOREIGN KEY (`id_pro`) REFERENCES `product` (`id_pro`);
 
 --
--- Các ràng buộc cho bảng `product`
+-- Constraints for table `product`
 --
 ALTER TABLE `product`
   ADD CONSTRAINT `lk_cate_product` FOREIGN KEY (`idcate`) REFERENCES `category` (`id_cate`);
